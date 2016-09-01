@@ -1,6 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ page import="com.byethursday.*"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 
 <meta charset="utf-8">
@@ -9,6 +11,7 @@
 	content="width=device-width, shrink-to-fit=no, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 <title>Erin's Zoo</title>
 
@@ -25,8 +28,8 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-</head>
 
+</head>
 <body>
 
 	<div id="wrapper">
@@ -49,33 +52,39 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12">
-						<h1>Erin's Zoo - Update</h1>
 
-						<p>Please choose the animal to update</p>
+						<h1>Erin's Zoo - Read</h1>
 
-						<select>
-							<option value=""></option>
-							<option value=""></option>
-							<option value=""></option>
-							<option value=""></option>
-						</select>
+						<table style="width: 80%;">
+							<tr>
+								<th>Name</th>
+								<th>Species</th>
+								<th>Enclosure</th>
+								<th>Food</th>
+							</tr>
 
-						<form action="" method="">
-							Name:<br>
-							<input type="text" name="name">
-							<br>
-							Species:<br>
-							<input type="text" name="species">
-							<br>
-							Enclosure:<br>
-							<input type="text" name="name">
-							<br>
-							Food:<br>
-							<input type="text" name="species">
-							<br>
-  							<input type="submit" value="Submit">
-						</form>
-						
+							<%
+								DAO.readFromDB();
+							%>
+
+							<%
+								//Animal readToJSP = new Animal();
+								for (int i = 0; i < DAO.ourZoo.size(); i++) {
+									Animal readToJSP = DAO.ourZoo.get(i);
+							%>
+							<tr>
+								<td><%=readToJSP.getName()%></td>
+								<td><%=readToJSP.getSpecies()%></td>
+								<td><%=readToJSP.getEnclosure()%></td>
+								<td><%=readToJSP.getFood()%></td>
+							</tr>
+							<%
+								}
+								DAO.ourZoo.clear();
+							%>
+
+						</table>
+
 					</div>
 				</div>
 			</div>
@@ -100,5 +109,4 @@
 	</script>
 
 </body>
-
 </html>

@@ -15,6 +15,8 @@ public class DAO {
 	static Statement STMT = null;
 	static PreparedStatement PREP_STMT = null;
 	static ResultSet RES_SET = null;
+	
+	public static final ArrayList<Animal> ourZoo = new ArrayList<>();
 
 	public static void connToDB() {
 
@@ -36,8 +38,6 @@ public class DAO {
 	public static void readFromDB() {
 
 		connToDB();
-
-		ArrayList<Animal> ourZoo = new ArrayList<>();
 
 		try {
 

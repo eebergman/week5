@@ -47,6 +47,8 @@ public class addToDB extends HttpServlet {
 		
 		DAO.writeToDatabase(addTodb);
 		
+		request.getRequestDispatcher("index.html").forward(request, response);
+		
 	} //doPost
 
 	
